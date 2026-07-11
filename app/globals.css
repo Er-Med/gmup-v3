@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gmup-navy: #1f3454;
+  --color-gmup-teal: #2e818a;
+  --color-gmup-mint: #5fd3d3;
+  --color-gmup-coral: #df606b;
+  --color-gmup-navy-soft: #eef2f7;
+  --color-gmup-teal-soft: #e8f4f4;
+  --color-gmup-border: #e6eef5;
+
+  --color-gmup-blue: #0d4ea6;
+  --color-gmup-blue-light: #5da9e9;
+  --color-gmup-text: #163a63;
+  --color-gmup-text-secondary: #5f728a;
+  --color-gmup-border-light: #e7eef7;
+
+  --color-heading: #183153;
+  --color-body: #4b5563;
+  --color-secondary: #6b7280;
+  --color-muted: #94a3b8;
+
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-calibri: Calibri, var(--font-carlito), "Segoe UI", sans-serif;
+  --font-serif: var(--font-ibm-plex-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  .page-bg {
+    position: relative;
+    min-height: 100vh;
+    background-color: #ffffff;
+  }
+
+  .page-bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: url("/gmup-v2-bg.png") top center / cover no-repeat;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .page-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Justified French prose — tighter on mobile to reduce large word gaps */
+  .prose-justify {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphenate-limit-chars: 5 2 2;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  @media (max-width: 767px) {
+    .prose-justify {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      word-spacing: -0.06em;
+      letter-spacing: -0.015em;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .prose-justify {
+      overflow-wrap: break-word;
+      word-spacing: normal;
+      letter-spacing: inherit;
+    }
+  }
+}
