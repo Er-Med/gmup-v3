@@ -147,7 +147,7 @@ export const EVENTS: Event[] = [
     date: "30 et 31 octobre 2026",
     location: "Hôtel le Marriott Casablanca",
     eventType: "Congrès",
-    programmeImage: "/banner-4eme.png",
+    programmeImage: "/programme-3eme.jpg",
     excerpt:
       "Ensemble pour des urgences pédiatriques plus performantes et humaines. Save the date — professionnels de santé.",
   },

@@ -65,7 +65,7 @@ export function AnimatedBanner({ src, alt, className }: AnimatedBannerProps) {
             width={1920}
             height={720}
             sizes="100vw"
-            className="block h-auto w-full object-contain object-center"
+            className="block h-[240px] w-full object-cover object-center sm:h-[280px] md:h-auto md:object-contain"
             priority
           />
         ) : (
@@ -86,7 +86,7 @@ export function AnimatedBanner({ src, alt, className }: AnimatedBannerProps) {
                   width={1920}
                   height={720}
                   sizes="100vw"
-                  className="block h-auto w-full object-contain object-center"
+                  className="block h-[240px] w-full object-cover object-center sm:h-[280px] md:h-auto md:object-contain"
                   priority
                 />
               </motion.div>

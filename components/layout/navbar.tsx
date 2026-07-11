@@ -5,7 +5,7 @@ import { useLenis } from "lenis/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/layout/container";
 import { useIsMobile } from "@/hooks";
@@ -146,7 +146,8 @@ export function Navbar() {
   const isMobile = useIsMobile();
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [logoHidden, setLogoHidden] = useState(false);
+  const [logoHidden, setLogoHidden] = useState(true);
+  const hasScrolledPastHide = useRef(false);
   const homeItem = nav.items[0];
   const blogItem = nav.items.find((item) => item.href === nav.blog)!;
   const sectionItems = nav.items.filter(
@@ -173,9 +174,17 @@ export function Navbar() {
   }, []);
 
   function updateLogoVisibility(scrollY: number) {
+    if (scrollY > HIDE_AT) {
+      hasScrolledPastHide.current = true;
+    }
+
     setLogoHidden((hidden) => {
       if (!hidden && scrollY > HIDE_AT) return true;
-      if (hidden && scrollY < SHOW_AT) return false;
+      // Keep the AR/FR logo collapsed on first load; only reveal after the
+      // user has scrolled past the hide threshold at least once.
+      if (hidden && scrollY < SHOW_AT && hasScrolledPastHide.current) {
+        return false;
+      }
       return hidden;
     });
   }

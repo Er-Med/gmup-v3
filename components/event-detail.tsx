@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AnimatedBanner } from "@/components/animated-banner";
-import { EventInfoSection } from "@/components/event-info-section";
 import { EventRegistrationCard } from "@/components/event-registration-card";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -82,12 +81,7 @@ export function EventDetail({ event }: EventDetailProps) {
                   className="mt-5 h-0.5 w-12 rounded-full bg-gmup-coral/75"
                   aria-hidden
                 />
-                <p className={cn("mt-6", typography.bodyLg, typography.prose)}>
-                  {event.date} — {event.location}
-                </p>
               </Reveal>
-
-              <EventInfoSection event={event} />
 
               <Reveal delay={0.1} direction="up" className="min-w-0">
                 <figure className="overflow-hidden rounded-2xl border border-gmup-teal/15 bg-gmup-navy-soft">
