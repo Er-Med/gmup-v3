@@ -78,7 +78,7 @@ export function CongressBanner({
     <section
       aria-label="Bannière — 4ème Congrès des urgences pédiatriques"
       className={cn(
-        "mx-auto w-full max-w-[var(--container-max)] px-5",
+        "w-full px-5",
         className,
       )}
     >

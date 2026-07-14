@@ -37,7 +37,7 @@ export default function RootLayout({
       <body className={cn("min-h-full font-sans antialiased", sourceSans3.className)}>
         <div
           className={cn(
-            "page-bg [--container-max:1060px] [--nav-bg:#1e3259] [--nav-text:#ffffff] font-sans text-body antialiased",
+            "page-frame [--container-max:1060px] [--nav-bg:#1e3259] [--nav-text:#ffffff] font-sans text-body antialiased",
             typography.body,
           )}
         >

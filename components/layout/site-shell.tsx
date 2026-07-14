@@ -36,10 +36,19 @@ type SiteShellProps = {
 
 export function SiteShell({ children, className }: SiteShellProps) {
   return (
-    <div className={cn("flex min-h-screen max-w-full flex-col overflow-x-clip font-sans antialiased", className)}>
-      <Navbar />
-      <main className="relative z-0 min-w-0 flex-1 overflow-x-clip">{children}</main>
-      <Footer />
+    <div
+      className={cn(
+        "flex min-h-screen max-w-full flex-col overflow-x-clip font-sans antialiased",
+        className,
+      )}
+    >
+      <div className="page-bg mx-auto flex min-h-screen w-full max-w-[var(--container-max)] flex-col">
+        <Navbar />
+        <main className="relative z-0 min-w-0 flex-1 overflow-x-clip">
+          {children}
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }
