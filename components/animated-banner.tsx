@@ -20,9 +20,12 @@ export function AnimatedBanner({ src, alt, className }: AnimatedBannerProps) {
   const simple = prefersReducedMotion || isMobile;
 
   return (
-    <section aria-label="Bannière" className={cn("w-full p-0", className)}>
+    <section
+      aria-label="Bannière"
+      className={cn("w-full px-4 pt-4 sm:px-5 sm:pt-5 md:px-6 md:pt-6", className)}
+    >
       <motion.div
-        className="relative w-full overflow-hidden leading-none bg-transparent"
+        className="page-gradient relative w-full overflow-hidden rounded-2xl leading-none sm:rounded-3xl md:rounded-[1.75rem]"
         initial={
           prefersReducedMotion
             ? false

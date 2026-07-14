@@ -1,4 +1,4 @@
-import { Carlito, IBM_Plex_Serif, Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Carlito, IBM_Plex_Serif, Inter, Source_Sans_3 } from "next/font/google";
 
 /** Metric-compatible Calibri substitute for non-Windows browsers. */
 export const carlito = Carlito({
@@ -8,8 +8,8 @@ export const carlito = Carlito({
   weight: ["400", "700"],
 });
 
-export const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
+export const sourceSans3 = Source_Sans_3({
+  variable: "--font-source-sans-3",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],

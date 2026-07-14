@@ -29,38 +29,72 @@ export function InstagramIcon({ className }: IconProps) {
   );
 }
 
-export const socialLinkClass =
-  "inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-solid border-white/55 text-white transition-colors hover:border-white hover:bg-white/10";
+export function YouTubeIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.75 15.5v-7l6.5 3.5-6.5 3.5Z" />
+    </svg>
+  );
+}
 
-export function SocialLinks({ className }: { className?: string }) {
+export const socialLinkClass =
+  "inline-flex size-9 shrink-0 items-center justify-center bg-[url('/social-icone-bg.svg')] bg-contain bg-center bg-no-repeat text-white transition-opacity hover:opacity-85";
+
+const headerSocialLinkClass =
+  "inline-flex size-7 shrink-0 items-center justify-center bg-[url('/social-icone-bg.svg')] bg-contain bg-center bg-no-repeat text-white transition-opacity hover:opacity-85 sm:size-9 md:size-10";
+
+type SocialLinksProps = {
+  className?: string;
+  variant?: "footer" | "header";
+};
+
+export function SocialLinks({
+  className,
+  variant = "footer",
+}: SocialLinksProps) {
+  const isHeader = variant === "header";
+  const linkClass = isHeader ? headerSocialLinkClass : socialLinkClass;
+  const iconClass = isHeader
+    ? "size-3.5 sm:size-[1.125rem] md:size-5"
+    : "size-[1.125rem]";
+
   return (
     <div className={cn("flex shrink-0 items-center gap-2", className)}>
+      <a
+        href={SITE.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className={linkClass}
+      >
+        <InstagramIcon className={iconClass} />
+      </a>
       <a
         href={SITE.facebook}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Facebook"
-        className={socialLinkClass}
+        className={linkClass}
       >
-        <FacebookIcon className="size-4" />
+        <FacebookIcon className={iconClass} />
+      </a>
+      <a
+        href={SITE.youtube}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+        className={linkClass}
+      >
+        <YouTubeIcon className={iconClass} />
       </a>
       <a
         href={SITE.linkedin}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
-        className={socialLinkClass}
+        className={linkClass}
       >
-        <LinkedInIcon className="size-4" />
-      </a>
-      <a
-        href={SITE.instagram}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        className={socialLinkClass}
-      >
-        <InstagramIcon className="size-4" />
+        <LinkedInIcon className={iconClass} />
       </a>
     </div>
   );

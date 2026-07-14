@@ -1,51 +1,71 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gmup-navy: #1f3454;
-  --color-gmup-teal: #2e818a;
+  --color-gmup-navy: #213355;
+  --color-gmup-teal: #0e8a92;
   --color-gmup-mint: #5fd3d3;
-  --color-gmup-coral: #df606b;
+  --color-gmup-coral: #e85b65;
   --color-gmup-navy-soft: #eef2f7;
   --color-gmup-teal-soft: #e8f4f4;
   --color-gmup-border: #e6eef5;
 
-  --color-gmup-blue: #0d4ea6;
+  --color-gmup-blue: #213355;
   --color-gmup-blue-light: #5da9e9;
-  --color-gmup-text: #163a63;
+  --color-gmup-text: #213355;
   --color-gmup-text-secondary: #5f728a;
   --color-gmup-border-light: #e7eef7;
 
-  --color-heading: #183153;
+  --color-heading: #213355;
   --color-body: #4b5563;
   --color-secondary: #6b7280;
   --color-muted: #94a3b8;
 
-  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
   --font-calibri: Calibri, var(--font-carlito), "Segoe UI", sans-serif;
-  --font-serif: var(--font-ibm-plex-serif), "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-ibm-plex-serif), "Cormorant Garamond", ui-serif,
+    Georgia, serif;
+  --font-body: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
+  --font-nav: var(--font-source-sans-3), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   .page-bg {
-    position: relative;
     min-height: 100vh;
+    overflow-x: clip;
+  }
+
+  .page-bg,
+  .page-gradient {
+    position: relative;
+    isolation: isolate;
     background-color: #ffffff;
   }
 
-  .page-bg::before {
+  .page-bg::before,
+  .page-gradient::before {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
-    z-index: 0;
-    background: url("/gmup-v2-bg.png") top center / cover no-repeat;
-    opacity: 0.2;
+    z-index: -1;
+    background-image: url("/motif-zelij.svg");
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: repeat-y;
+    filter: blur(1px);
+    opacity: 0.35;
     pointer-events: none;
   }
 
-  .page-bg > * {
+  /* Content sits over the motif without covering it */
+  .page-surface {
     position: relative;
-    z-index: 1;
+    z-index: 0;
+    background-color: transparent;
+  }
+
+  /* Header branding strip — motif shows through */
+  .header-brand-bg {
+    background: transparent;
   }
 
   *,
@@ -70,6 +90,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   /* Justified French prose — tighter on mobile to reduce large word gaps */

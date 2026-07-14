@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { AnimatedBanner } from "@/components/animated-banner";
+import { CongressBanner } from "@/components/congress-banner";
 import { EventRegistrationCard } from "@/components/event-registration-card";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
@@ -26,16 +27,26 @@ function formatEditionTitle(title: string) {
 
 export function EventDetail({ event }: EventDetailProps) {
   const title = formatEditionTitle(event.title);
+  const isCongress = event.slug === "4eme-congres-urgences-pediatriques";
 
   return (
     <>
-      <AnimatedBanner
-        src="/banner-4eme.png"
-        alt={`Bannière — ${event.title}`}
-      />
+      {isCongress ? (
+        <CongressBanner
+          theme={event.excerpt}
+          date={event.date}
+          location={event.location}
+          href={`${ROUTES.event(event.slug)}#inscription`}
+        />
+      ) : (
+        <AnimatedBanner
+          src="/banner-v2.webp"
+          alt={`Bannière — ${event.title}`}
+        />
+      )}
 
       <section
-        className="relative border-b border-gmup-navy/8 pt-10 pb-24 md:pt-12 lg:pt-14 lg:pb-28"
+        className="page-surface relative border-b border-gmup-navy/8 pt-10 pb-24 md:pt-12 lg:pt-14 lg:pb-28"
         aria-labelledby="event-title"
       >
         <Container>

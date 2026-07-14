@@ -43,7 +43,9 @@ export function Reveal({
 
   const offset = isMobile
     ? { x: 0, y: 16 }
-    : directionOffset[direction];
+    : direction === "left" || direction === "right"
+      ? { x: directionOffset[direction].x * 0.5, y: 0 }
+      : directionOffset[direction];
 
   const variants: Variants = {
     hidden: { opacity: 0, ...offset },

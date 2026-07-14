@@ -1,60 +1,45 @@
 import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
-import { Parallax } from "@/components/motion/parallax";
 import { Reveal } from "@/components/motion/reveal";
-import { AnimatedBanner } from "@/components/animated-banner";
+import { CongressBanner } from "@/components/congress-banner";
+import { ObjectivesSection } from "@/components/objectives-section";
 import { PresidentMessageSection } from "@/components/president-message-section";
-import { typography } from "@/lib/typography";
-import { cn } from "@/utils/cn";
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className={cn("mb-3.5 inline-block", typography.eyebrow)}>
-      {children}
-    </span>
-  );
-}
+import { SectionTitle } from "@/components/section-title";
 
 export function Home() {
   return (
     <>
-      <AnimatedBanner
-        src="/banner-4eme.png"
-        alt="Bannière — 4ème Congrès des urgences pédiatriques GMUP"
-      />
+      <CongressBanner />
 
       <PresidentMessageSection />
 
-      <section className="py-20" id="bureau" aria-labelledby="bureau-title">
+      <section
+        className="h-fit pt-2 pb-5 md:pt-3 md:pb-4"
+        id="bureau"
+        aria-labelledby="bureau-title"
+      >
         <Container>
-          <Reveal as="header" className="mx-auto mb-10 max-w-2xl text-center">
-            <Eyebrow>Gouvernance</Eyebrow>
-            <h2 className={typography.h2} id="bureau-title">
-              Le Bureau du GMUP
-            </h2>
-            <p className={cn("mt-4", typography.bodyLg, typography.prose)}>
-              L&apos;équipe élue qui porte les décisions et les projets du groupe.
-            </p>
+          <Reveal>
+            <SectionTitle id="bureau-title" className="mb-3 md:mb-1">
+              Le Bureau
+            </SectionTitle>
           </Reveal>
-        </Container>
 
-        <Reveal delay={0.08} className="w-full">
-          <Parallax
-            offset={28}
-            className="w-full overflow-hidden bg-transparent md:mx-auto md:max-w-[var(--container-max)] md:px-5"
-          >
+          <Reveal delay={0.08} className="mt-0 w-full md:-mt-2">
             <Image
-              src="/bureau.webp"
+              src="/organigrame.svg"
               alt="Organigramme du Bureau du GMUP"
-              width={1600}
-              height={900}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) calc(100vw - 2.5rem), 1100px"
+              width={588}
+              height={213}
+              sizes="(max-width: 768px) calc(100vw - 2.5rem), 1060px"
               className="h-auto w-full bg-transparent object-contain"
             />
-          </Parallax>
-        </Reveal>
+          </Reveal>
+        </Container>
       </section>
+
+      <ObjectivesSection />
     </>
   );
 }

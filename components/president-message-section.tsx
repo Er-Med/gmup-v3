@@ -5,81 +5,132 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { PRESIDENT_LETTER, PRESIDENT_MESSAGE } from "@/lib/content";
-import { typography } from "@/lib/typography";
-import { cn } from "@/utils/cn";
+
+function QuoteMark({
+  closing = false,
+  className,
+}: {
+  closing?: boolean;
+  className?: string;
+}) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/double-quotes.svg"
+      alt=""
+      width={20}
+      height={15}
+      aria-hidden
+      className={[
+        "inline-block h-[0.55em] w-auto shrink-0 align-text-top",
+        closing ? "ml-0.5 rotate-180" : "mr-1",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    />
+  );
+}
 
 function PresidentPortrait() {
+  const { president } = PRESIDENT_LETTER;
+
   return (
-    <div className="relative mx-auto w-full max-w-[280px] lg:mx-0 lg:max-w-none">
-      <div className="overflow-hidden rounded-2xl border border-gmup-teal/15 bg-gmup-navy-soft">
-        <Image
-          src={PRESIDENT_MESSAGE.portraitSrc}
-          alt={PRESIDENT_MESSAGE.portraitAlt}
-          width={320}
-          height={404}
-          sizes="(max-width: 1024px) 72vw, 320px"
-          className="h-auto w-full object-cover"
-        />
-      </div>
-    </div>
+    <figure className="mx-auto w-full max-w-[220px] border border-[#0e8a92]/40 bg-white p-2.5 lg:mx-0 lg:max-w-none">
+      <Image
+        src={PRESIDENT_MESSAGE.portraitSrc}
+        alt={PRESIDENT_MESSAGE.portraitAlt}
+        width={320}
+        height={404}
+        sizes="(max-width: 1024px) 220px, 220px"
+        className="h-auto w-full object-cover object-top"
+      />
+      <figcaption className="mt-2.5 text-center">
+        <p className="font-nav text-base font-bold leading-snug tracking-wide text-gmup-navy">
+          {president.name}
+        </p>
+      </figcaption>
+    </figure>
   );
 }
 
 export function PresidentMessageSection() {
-  const { president, paragraphs } = PRESIDENT_LETTER;
+  const { lead, intro, quote, closing } = PRESIDENT_LETTER;
 
   return (
     <section
-      className="relative border-b border-gmup-navy/8 pt-10 pb-24 md:pt-12 lg:pt-14 lg:pb-28"
+      className="relative overflow-hidden pt-8 pb-2 md:pt-10 md:pb-3"
       id="president"
       aria-labelledby="president-title"
     >
       <Container className="relative">
-        <div className="grid gap-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(260px,0.65fr)] lg:items-start lg:gap-20 xl:gap-24">
-          <Reveal as="article" direction="left" className="min-w-0">
-            <h2 className={typography.h2} id="president-title">
+        <Reveal>
+          <div className="mb-4 inline-flex max-w-full flex-col items-stretch gap-0.5 md:mb-5">
+            <h2
+              id="president-title"
+              className="font-nav text-2xl font-bold tracking-[0.04em] text-gmup-coral uppercase md:text-[1.75rem]"
+            >
               {PRESIDENT_MESSAGE.label}
             </h2>
-
-            <div
-              className="mt-5 h-0.5 w-12 rounded-full bg-gmup-coral/75"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/mp-title-divider.svg"
+              alt=""
+              width={220}
+              height={16}
+              className="h-auto w-0 min-w-full"
               aria-hidden
             />
+          </div>
+        </Reveal>
 
-            <div
-              className={cn(
-                "mt-10 text-[0.9375rem] leading-[1.7] sm:text-[1.0625rem] sm:leading-[1.75] md:text-lg md:leading-[1.7]",
-                typography.prose,
-                typography.proseStack,
-              )}
-            >
-              {paragraphs.map((paragraph, index) => (
-                <Reveal key={index} delay={0.06 + index * 0.06} direction="up">
-                  <p className="prose-justify" lang="fr">
-                    {paragraph}
-                  </p>
-                </Reveal>
+        <div className="grid gap-4 md:grid-cols-[minmax(180px,220px)_minmax(0,1fr)] md:items-center md:gap-2.5 lg:gap-3">
+          <Reveal direction="left" className="self-center">
+            <PresidentPortrait />
+          </Reveal>
+
+          <Reveal direction="right" as="div" className="relative min-w-0">
+            <div className="flex flex-col gap-0 font-nav text-gmup-blue md:pl-[0.85em]">
+              <p
+                className="prose-justify text-xl font-bold leading-[1.4] [word-spacing:-0.02em] md:-indent-[0.85em] md:text-[19.5px]"
+                lang="fr"
+              >
+                <QuoteMark />
+                {lead}
+                <QuoteMark closing />
+              </p>
+              {intro.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="prose-justify text-base font-normal leading-[1.5] [word-spacing:-0.02em]"
+                  lang="fr"
+                >
+                  {paragraph}
+                </p>
               ))}
             </div>
           </Reveal>
-
-          <Reveal
-            delay={0.12}
-            direction="right"
-            as="aside"
-            className="flex flex-col items-center gap-5 lg:sticky lg:top-40 lg:self-start lg:items-start"
-          >
-            <PresidentPortrait />
-
-            <div className="w-full max-w-[280px] text-center lg:max-w-none lg:text-left">
-              <p className={typography.eyebrow}>{president.role}</p>
-              <p className={cn("mt-1.5", typography.name)}>{president.name}</p>
-              <p className={cn("mt-2 mx-auto max-w-xs lg:mx-0", typography.small)}>
-                {president.note}
-              </p>
-            </div>
-          </Reveal>
         </div>
+
+        <Reveal delay={0.08} className="mt-2 md:mt-2.5">
+          <blockquote className="font-nav text-xl font-bold leading-[1.4] text-gmup-blue [word-spacing:-0.02em] md:text-[19.5px]">
+            <p className="prose-justify" lang="fr">
+              <QuoteMark />
+              {quote}
+              <QuoteMark closing />
+            </p>
+          </blockquote>
+        </Reveal>
+
+        <Reveal delay={0.12} className="mt-0">
+          <div className="flex flex-col gap-0 font-nav text-base font-normal leading-[1.5] text-gmup-blue [word-spacing:-0.02em]">
+            {closing.map((paragraph, index) => (
+              <p key={index} className="prose-justify" lang="fr">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </Reveal>
       </Container>
     </section>
   );

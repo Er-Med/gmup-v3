@@ -32,6 +32,7 @@ export const SITE = {
   facebook: "https://www.facebook.com/",
   linkedin: "https://www.linkedin.com/",
   instagram: "https://www.instagram.com/",
+  youtube: "https://www.youtube.com/",
   organizer: {
     name: "Agence organisatrice, ARKAYN HEALTH",
     phone: "+212665730530",
@@ -63,18 +64,22 @@ export const PRESIDENT_MESSAGE = {
 } as const;
 
 export const PRESIDENT_LETTER = {
-  paragraphs: [
-    "La médecine d'urgence en pédiatrie n'est pas encore reconnue comme sous-spécia­lité au Maroc, comme c'est le cas dans des pays anglo­phones et certains pays euro­péens. Toute­fois, certains Centres Hospi­ta­liers Univer­si­taires maro­cains, notam­ment les plus anciens, ont ressenti l'impor­tance de la mise en place d'un Service d'Accueil des Urgences Pédia­triques (SAUP) avec une équipe aussi bien médi­cale que para­mé­di­cale dédiée unique­ment à l'accueil et à la prise en charge des enfants consul­tants en urgence.",
-    "Cette indivi­dua­li­sa­tion des locaux et du personnel pour les urgences pédia­triques ne s'est pas accom­pa­gnée par l'élabo­ra­tion des normes concer­nant la défi­ni­tion des rôles (service des urgences et services d'hospi­ta­li­sa­tion), de l'archi­tec­ture des locaux néces­saires, de l'orga­ni­sa­tion interne selon le niveau des soins demandés, ni de la défi­ni­tion des profils (médical et para­mé­dical) qui devraient y travailler.",
-    "Les pédia­tres des urgences se sentent souvent dépassés et non valori­sés, malgré les efforts énormes qu'ils four­nissent ; seuls ceux qui y travaillent le savent. Il y a heureu­se­ment de jeunes médecins qui demandent à se former pour pouvoir iden­ti­fier les vraies urgences, les prendre en charge rapi­de­ment et d'une façon adéquate.",
-    "La création du Groupe Marocain des Urgences Pédia­triques (GMUP) est venue répondre essen­tiel­le­ment à ce besoin en forma­tion, et vise à réunir les diffé­rents pédia­tres et urgen­tistes qui s'occupent de la prise en charge des urgences pédia­triques. Cette action sera béné­fique grâce au partage des expé­riences, à l'harmo­ni­sa­tion des proto­coles et procé­dures de prise en charge, et à l'élabo­ra­tion de réfé­ren­tiels natio­naux avec les sociétés savantes et les instances respon­sables. Tout cela permettra certa­i­ne­ment de valori­ser l'acti­vité des services des urgences, d'iden­ti­fier les points de force et de faiblesse et d'amé­lio­rer la prise en charge des enfants malades dès leur arrivée dans un service d'urgences.",
+  lead: "La médecine d'urgence en pédiatrie n'est pas encore reconnue comme sous-spécia­lité au Maroc, comme c'est le cas dans des pays anglo­phones et certains pays euro­péens.",
+  intro: [
+    "Toute­fois, certains Centres Hospi­ta­liers Univer­si­taires maro­cains, notam­ment les plus anciens, ont ressenti l'impor­tance de la mise en place d'un Service d'Accueil des Urgences Pédia­triques (SAUP) avec une équipe aussi bien médi­cale que para­mé­di­cale dédiée unique­ment à l'accueil et à la prise en charge des enfants consul­tants en urgence.",
+    "Cette indivi­dua­li­sa­tion des locaux et du personnel pour les urgences pédia­triques ne s'est pas accom­pa­gnée par l'élabo­ra­tion des normes concer­nant la défi­ni­tion des rôles (service des urgences et services d'hospi­ta­li­sa­tion), de l'archi­tec­ture des locaux néces­saires, de l'orga­ni­sa­tion interne selon le niveau des soins demandés, ni de la défi­ni­tion des profils (médical et para­mé­dical) qui devraient y travailler. Les pédia­tres des urgences se sentent souvent dépassés et non valori­sés, malgré les efforts énormes qu'ils four­nissent ; seuls ceux qui y travaillent le savent. Il y a heureu­se­ment de jeunes médecins qui demandent à se former pour pouvoir iden­ti­fier les vraies urgences, les prendre en charge rapi­de­ment et d'une façon adéquate.",
+  ],
+  quote:
+    "La création du Groupe Marocain des Urgences Pédia­triques (GMUP) est venue répondre essen­tiel­le­ment au besoin en forma­tion, et vise à réunir les diffé­rents pédia­tres et urgen­tistes qui s'occupent de la prise en charge des urgences pédia­triques.",
+  closing: [
+    "Cette action sera béné­fique grâce au partage des expé­riences, à l'harmo­ni­sa­tion des proto­coles et procé­dures de prise en charge, et à l'élabo­ra­tion de réfé­ren­tiels natio­naux avec les sociétés savantes et les instances respon­sables. Tout cela permettra certa­i­ne­ment de valori­ser l'acti­vité des services des urgences, d'iden­ti­fier les points de force et de faiblesse et d'amé­lio­rer la prise en charge des enfants malades dès leur arrivée dans un service d'urgences.",
     "Nous espérons, qu'avec l'effort de tous, faire recon­naître la médecine d'urgence en pédiatrie en tant que sous-spécia­lité pédia­trique et la rendre plus attrac­tive.",
   ],
   president: {
     initials: "WG",
     role: "Présidente",
-    name: "Dr Widad GUEDDARI",
-    note: "Présidente du Groupe Marocain des Urgences Pédiatriques",
+    name: "DR. Widad GUEDDARI",
+    note: "Présidente du groupe marocain des urgences pédiatriques",
   },
 } as const;
 
@@ -89,6 +94,15 @@ export const BUREAU_MEMBERS: BureauMember[] = [
 
 export const ADVISORS =
   "M. Borrous · M. El-Bouz · Y. Jeddi · Fz. El Amrani Idrissi · N. Benbouziane";
+
+export const OBJECTIVES = [
+  "Créer des liens d'entraide et de collaboration entre ses différents membres.",
+  "Œuvrer au développement de la médecine d'urgences pédiatriques pré-hospitalière et hospitalière.",
+  "Participer, avec les différentes sociétés savantes et association à la promotion, éducation sanitaire et sociale et à la prévention des maladies de l'enfant.",
+  "Elaborer des protocoles de prise en charge des enfants malades se présentant aux différents services des urgences.",
+  "Participer à la formation continue.",
+  "Coopérer avec tout organisme privé ou public, national ou international, ayant des objectifs similaires.",
+] as const;
 
 export const BLOG_POSTS: BlogPost[] = [
   {
