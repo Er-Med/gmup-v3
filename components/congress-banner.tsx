@@ -132,7 +132,7 @@ export function CongressBanner({
           <div className="relative flex aspect-[651.9/127.82] items-stretch overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/full-banner-bg.svg"
+              src="/full-banner-bg.png"
               alt=""
               aria-hidden
               className="pointer-events-none absolute inset-0 z-0 h-full w-full object-fill select-none"
