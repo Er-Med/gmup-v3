@@ -20,6 +20,8 @@ export type Event = {
   location: string;
   eventType: string;
   programmeImage: string;
+  /** Optional save-the-date / affiche shown beside the programme. */
+  afficheImage?: string;
   excerpt?: string;
 };
 
@@ -136,12 +138,13 @@ export const EVENTS: Event[] = [
     slug: "2eme-journee-urgences-pediatriques",
     title: "2ème journée d'urgences pédiatriques",
     shortTitle: "2ème journée",
-    date: "14 septembre 2024",
-    location: "Casablanca",
+    date: "19 octobre 2024",
+    location: "Hôtel le Barceló Anfa Casablanca",
     eventType: "Journée scientifique",
-    programmeImage: "/programme-2eme.jpg",
+    programmeImage: "/2eme-journee-programme.png",
+    afficheImage: "/2eme-journee-savethedate.png",
     excerpt:
-      "Journée scientifique dédiée aux urgences pédiatriques : réanimation, voies aériennes et gestion des flux.",
+      "Journée scientifique dédiée aux urgences pédiatriques : états de mal convulsif et convulsions fébriles.",
   },
   {
     slug: "3eme-journee-urgences-pediatriques",
@@ -150,7 +153,8 @@ export const EVENTS: Event[] = [
     date: "25 octobre 2025",
     location: "Hôtel Barceló Anfa, Casablanca",
     eventType: "Journée scientifique",
-    programmeImage: "/programme-3eme.jpg",
+    programmeImage: "/affiche-3eme-journee.png",
+    afficheImage: "/3eme-journee-save-the-date.png",
     excerpt:
       "Affiche de l'édition 2025 et best-of de la journée SAUP Casablanca.",
   },

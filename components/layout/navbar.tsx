@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { Container } from "@/components/layout/container";
 import { SocialLinks } from "@/components/layout/social-icons";
@@ -166,6 +166,7 @@ export function Navbar() {
   const reduceMotion = useReducedMotion() ?? false;
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const agendaRef = useRef<HTMLDivElement>(null);
   const homeItem = nav.items[0];
   const blogItem = nav.items.find((item) => item.href === nav.blog)!;
   const sectionItems = nav.items.filter(
@@ -189,6 +190,22 @@ export function Navbar() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+
+    function onPointerDown(event: MouseEvent) {
+      if (
+        agendaRef.current &&
+        !agendaRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", onPointerDown);
+    return () => document.removeEventListener("mousedown", onPointerDown);
+  }, [dropdownOpen]);
 
   return (
     <header className={cn("z-50 text-[var(--nav-text)]", open && "is-open")}>
@@ -222,15 +239,10 @@ export function Navbar() {
         </Container>
       </div>
 
-      <Container
-        className={cn("px-0 md:px-5", pathname === "/" && "pb-0")}
-      >
+      <Container className="px-0 pb-0 md:px-5">
         <div
           className={cn(
-            "overflow-x-clip bg-[var(--nav-bg)]",
-            pathname === "/"
-              ? "relative z-10"
-              : "rounded-xl shadow-[0_2px_8px_rgba(15,35,70,0.12)]",
+            "relative z-10 overflow-x-clip bg-[var(--nav-bg)]",
             open && "overflow-hidden",
           )}
         >
@@ -256,11 +268,7 @@ export function Navbar() {
                     />
                   ))}
 
-                  <div
-                    className="relative"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
-                  >
+                  <div className="relative" ref={agendaRef}>
                     <AgendaTrigger
                       active={nav.isAgendaActive}
                       open={dropdownOpen}

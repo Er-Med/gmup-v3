@@ -9,6 +9,8 @@ type CongressBannerProps = {
   date?: string;
   location?: string;
   href?: string;
+  /** When false, hides the « S'inscrire » CTA (used on event detail pages). */
+  showRegister?: boolean;
 };
 
 const DEFAULT_HREF = ROUTES.event("4eme-congres-urgences-pediatriques");
@@ -70,6 +72,7 @@ export function CongressBanner({
   date = DEFAULT_DATE,
   location = DEFAULT_LOCATION,
   href = DEFAULT_HREF,
+  showRegister = true,
 }: CongressBannerProps) {
   const dateLines = splitDateLines(date);
   const locationLines = splitLocationLines(location);
@@ -117,12 +120,14 @@ export function CongressBanner({
             iconClassName="h-7 w-auto"
             lines={locationLines}
           />
-          <Link
-            href={href}
-            className="mt-1 inline-flex h-11 w-fit self-center items-center justify-center rounded-lg border border-gmup-teal bg-white px-5 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal"
-          >
-            S&apos;inscrire au congrès
-          </Link>
+          {showRegister ? (
+            <Link
+              href={href}
+              className="mt-1 inline-flex h-11 w-fit self-center items-center justify-center rounded-lg border border-gmup-teal bg-white px-5 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal"
+            >
+              S&apos;inscrire au congrès
+            </Link>
+          ) : null}
         </div>
       </div>
 
@@ -174,7 +179,14 @@ export function CongressBanner({
               />
             </svg>
 
-            <div className="relative z-[1] flex h-full flex-col justify-center gap-3 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:px-6 sm:py-0 sm:pr-12 md:gap-6 md:px-7 md:pr-14">
+            <div
+              className={cn(
+                "relative z-[1] flex h-full flex-col justify-center gap-3 px-5 py-3 sm:flex-row sm:items-center sm:gap-5 sm:px-6 sm:py-0 md:gap-6 md:px-7",
+                showRegister
+                  ? "sm:justify-between sm:pr-12 md:pr-14"
+                  : "sm:justify-start sm:gap-10 sm:pr-8 md:gap-14 md:pr-10",
+              )}
+            >
               <div className="flex min-w-0 items-center gap-2.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -213,12 +225,14 @@ export function CongressBanner({
                 </p>
               </div>
 
-              <Link
-                href={href}
-                className="inline-flex h-10 shrink-0 items-center justify-center rounded-[6px] border border-gmup-teal bg-white px-4 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal sm:text-[0.9375rem]"
-              >
-                S&apos;inscrire au congrès
-              </Link>
+              {showRegister ? (
+                <Link
+                  href={href}
+                  className="inline-flex h-10 shrink-0 items-center justify-center rounded-[6px] border border-gmup-teal bg-white px-4 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal sm:text-[0.9375rem]"
+                >
+                  S&apos;inscrire au congrès
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>

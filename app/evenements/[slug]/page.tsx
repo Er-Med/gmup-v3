@@ -18,9 +18,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!event) return { title: "Événement" };
 
+  const isInscription =
+    event.slug === "4eme-congres-urgences-pediatriques";
+
   return {
     title: event.title,
-    description: `${event.title} — programme et inscription.`,
+    description: isInscription
+      ? `${event.title} — programme et inscription.`
+      : `${event.title} — programme.`,
   };
 }
 
