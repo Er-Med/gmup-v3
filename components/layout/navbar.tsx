@@ -163,7 +163,7 @@ function AgendaTrigger({
 export function Navbar() {
   const pathname = usePathname();
   const nav = buildNav(pathname);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion() ?? false;
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const homeItem = nav.items[0];
