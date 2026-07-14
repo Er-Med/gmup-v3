@@ -36,11 +36,11 @@ export function CongressCtaStrip({
                 />
 
                 <div className="min-w-0">
-                  <p className="font-body text-base leading-snug font-medium text-white md:text-lg md:leading-snug">
+                  <p className="font-body text-base leading-snug font-normal text-white md:text-lg md:leading-snug">
                     Rejoignez-nous au 4<sup className="text-[0.65em]">ème</sup>{" "}
                     Congrès des urgences pédiatriques
                   </p>
-                  <p className="mt-0.5 font-body text-[0.9375rem] font-thin leading-snug text-white/70 md:text-base">
+                  <p className="mt-0.5 font-body text-[0.9375rem] font-light leading-snug text-white/70 md:text-base">
                     30 et 31 Octobre 2026 – Hôtel le Marriott, Casablanca
                   </p>
                 </div>
