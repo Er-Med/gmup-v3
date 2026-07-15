@@ -12,7 +12,7 @@ export function SectionTitle({
   id,
   children,
   className,
-  dividerSrc = "/br-bureau-divider.svg",
+  dividerSrc = "/bureau%26objectif-underline.svg",
 }: SectionTitleProps) {
   return (
     <header

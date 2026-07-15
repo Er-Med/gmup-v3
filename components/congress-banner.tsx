@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Pointer } from "lucide-react";
 
 import { ROUTES } from "@/lib/content";
 import { cn } from "@/utils/cn";
@@ -16,8 +17,7 @@ type CongressBannerProps = {
 const DEFAULT_HREF = ROUTES.event("4eme-congres-urgences-pediatriques");
 const DEFAULT_DATE = "30 et 31 Octobre 2026";
 const DEFAULT_LOCATION = "Hôtel le Marriott Casablanca";
-const DEFAULT_THEME =
-  "Thème Thème Thème Thème Thème Thème Thème Thème Thème Thème";
+const DEFAULT_THEME = "Thème";
 
 function splitDateLines(date: string) {
   const match = date.match(/^(.+?)\s+(octobre\s+\d{4})$/i);
@@ -66,6 +66,36 @@ function InfoChip({
   );
 }
 
+function RegisterCtaLink({
+  href,
+  className,
+  buttonClassName,
+}: {
+  href: string;
+  className?: string;
+  buttonClassName?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        /* pl reserves icon + gap so absolute hand never clips or overlaps siblings */
+        "relative inline-flex items-center pl-[2.375rem]",
+        className,
+      )}
+    >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center text-gmup-teal animate-cta-icon-pulse"
+      >
+        <Pointer className="size-7 rotate-90" strokeWidth={2} />
+      </span>
+      <Link href={href} className={buttonClassName}>
+        S&apos;inscrire au congrès
+      </Link>
+    </div>
+  );
+}
+
 export function CongressBanner({
   className,
   theme = DEFAULT_THEME,
@@ -81,7 +111,7 @@ export function CongressBanner({
     <section
       aria-label="Bannière — 4ème Congrès des urgences pédiatriques"
       className={cn(
-        "w-full px-5",
+        "w-full px-5 md:px-0",
         className,
       )}
     >
@@ -121,12 +151,11 @@ export function CongressBanner({
             lines={locationLines}
           />
           {showRegister ? (
-            <Link
+            <RegisterCtaLink
               href={href}
-              className="mt-1 inline-flex h-11 w-fit self-center items-center justify-center rounded-lg border border-gmup-teal bg-white px-5 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal"
-            >
-              S&apos;inscrire au congrès
-            </Link>
+              className="mt-1 self-center"
+              buttonClassName="inline-flex h-11 w-fit items-center justify-center rounded-[14px_14px_2.5rem_14px] bg-white px-5 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal"
+            />
           ) : null}
         </div>
       </div>
@@ -226,12 +255,11 @@ export function CongressBanner({
               </div>
 
               {showRegister ? (
-                <Link
+                <RegisterCtaLink
                   href={href}
-                  className="inline-flex h-10 shrink-0 items-center justify-center rounded-[6px] border border-gmup-teal bg-white px-4 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal sm:text-[0.9375rem]"
-                >
-                  S&apos;inscrire au congrès
-                </Link>
+                  className="shrink-0"
+                  buttonClassName="inline-flex h-10 shrink-0 items-center justify-center rounded-[14px_14px_2.5rem_14px] bg-white px-4 font-sans text-[0.875rem] font-bold leading-none text-gmup-coral shadow-[0_2px_6px_rgba(33,51,85,0.1)] transition-colors hover:bg-gmup-teal-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gmup-teal sm:text-[0.9375rem]"
+                />
               ) : null}
             </div>
           </div>

@@ -26,7 +26,7 @@ export function ObjectivesSection() {
     >
       <Container>
         <Reveal>
-          <SectionTitle id="objectifs-title" dividerSrc="/obj-bureau-divider.svg">
+          <SectionTitle id="objectifs-title">
             Objectifs
           </SectionTitle>
         </Reveal>

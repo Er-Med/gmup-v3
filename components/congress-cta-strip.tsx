@@ -28,7 +28,7 @@ export function CongressCtaStrip({
       className={className}
     >
       <Reveal>
-        <Container className="px-0 sm:px-5">
+        <Container className="px-0">
           <div className="bg-gmup-navy">
             <div
               className={

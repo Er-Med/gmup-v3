@@ -160,6 +160,40 @@ function AgendaTrigger({
   );
 }
 
+export function TopHeader() {
+  return (
+    <div className="header-brand-bg">
+      <Container className="flex items-center justify-between gap-4 py-3.5 sm:gap-5 sm:py-4.5 md:py-5 lg:gap-6 lg:py-6">
+        <Link
+          href="/"
+          className="shrink-0 transition-opacity duration-200 hover:opacity-90"
+        >
+          <Image
+            src="/logo-arrondi-ar-fr.svg"
+            alt="Logo GMUP — Groupe Marocain des Urgences Pédiatriques"
+            width={200}
+            height={200}
+            className="h-[5.4rem] w-auto object-contain sm:h-[6.3rem] md:h-[6.75rem] lg:h-[7.2rem]"
+            priority
+          />
+        </Link>
+
+        <div className="flex min-w-0 flex-col items-end gap-1.5 sm:gap-2.5 md:gap-3">
+          <Image
+            src="/title-ar-fr.svg"
+            alt={SITE.fullName}
+            width={480}
+            height={54}
+            className="h-5 w-auto max-w-full object-contain object-right sm:h-[1.8rem] md:h-[2.025rem] lg:h-[2.25rem]"
+            priority
+          />
+          <SocialLinks variant="header" className="gap-1.5 sm:gap-2.5" />
+        </div>
+      </Container>
+    </div>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const nav = buildNav(pathname);
@@ -209,37 +243,7 @@ export function Navbar() {
 
   return (
     <header className={cn("z-50 text-[var(--nav-text)]", open && "is-open")}>
-      <div className="header-brand-bg">
-        <Container className="flex items-center justify-between gap-4 py-3.5 sm:gap-5 sm:py-4.5 md:py-5 lg:gap-6 lg:py-6">
-          <Link
-            href={nav.home}
-            className="shrink-0 transition-opacity duration-200 hover:opacity-90"
-          >
-            <Image
-              src="/logo-arrondi-ar-fr.svg"
-              alt="Logo GMUP — Groupe Marocain des Urgences Pédiatriques"
-              width={200}
-              height={200}
-              className="h-[5.4rem] w-auto object-contain sm:h-[6.3rem] md:h-[6.75rem] lg:h-[7.2rem]"
-              priority
-            />
-          </Link>
-
-          <div className="flex min-w-0 flex-col items-end gap-1.5 sm:gap-2.5 md:gap-3">
-            <Image
-              src="/title-ar-fr.svg"
-              alt={SITE.fullName}
-              width={480}
-              height={54}
-              className="h-5 w-auto max-w-full object-contain object-right sm:h-[1.8rem] md:h-[2.025rem] lg:h-[2.25rem]"
-              priority
-            />
-            <SocialLinks variant="header" className="gap-1.5 sm:gap-2.5" />
-          </div>
-        </Container>
-      </div>
-
-      <Container className="px-0 pb-0 md:px-5">
+      <div className="w-full pb-0">
         <div
           className={cn(
             "relative z-10 overflow-x-clip bg-[var(--nav-bg)]",
@@ -390,7 +394,7 @@ export function Navbar() {
             </div>
           </nav>
         </div>
-      </Container>
+      </div>
     </header>
   );
 }

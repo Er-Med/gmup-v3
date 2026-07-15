@@ -24,13 +24,13 @@ export function EventDetail({ event }: EventDetailProps) {
 
         <section
           id="inscription"
-          className="page-surface relative pt-8 pb-8 md:pt-10 md:pb-10 lg:pt-12 lg:pb-12"
+          className="page-surface relative pt-3 pb-4 md:pt-4 md:pb-5 lg:pt-5 lg:pb-6"
           aria-label={`${event.title} — inscription`}
         >
           <Container>
             <div className="grid items-start gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-8 lg:gap-10">
               <Reveal direction="left" className="min-w-0">
-                <figure className="overflow-hidden rounded-[4px] shadow-[0_4px_24px_rgba(33,51,85,0.08)]">
+                <figure className="overflow-hidden rounded-[4px] border border-gmup-navy/25 shadow-[0_2px_12px_rgba(33,51,85,0.06)]">
                   <Image
                     src="/4eme-congres-afiche.png"
                     alt="4ème Congrès des urgences pédiatriques — Save the date"

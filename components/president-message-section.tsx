@@ -74,7 +74,7 @@ export function PresidentMessageSection() {
             </h2>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/mp-title-divider.svg"
+              src="/mot-underline.svg"
               alt=""
               width={220}
               height={16}
