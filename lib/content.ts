@@ -31,8 +31,9 @@ export const SITE = {
   description:
     "Groupe Marocain des Urgences Pédiatriques — Mot du Président et Bureau.",
   locale: "fr",
-  facebook: "https://www.facebook.com/",
-  linkedin: "https://www.linkedin.com/",
+  facebook: "https://www.facebook.com/share/1HDhUsLrXA/",
+  linkedin:
+    "https://www.linkedin.com/in/groupe-marocain-des-urgences-p%C3%A9diatriques-b39392422/",
   instagram: "https://www.instagram.com/",
   youtube: "https://www.youtube.com/",
   organizer: {
