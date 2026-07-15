@@ -161,7 +161,7 @@ export function CongressBanner({
       </div>
 
       {/* —— Desktop layout —— */}
-      <div className="relative hidden border border-t-0 border-gmup-navy/10 pb-[3.5rem] md:block [--info-bar-h:4.125rem]">
+      <div className="relative hidden pb-[3.5rem] md:block [--info-bar-h:4.125rem]">
         <div className="relative isolate">
           <div className="relative flex aspect-[651.9/127.82] items-stretch overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
